@@ -63,8 +63,18 @@ def main():
 
   print("Is this directory valid?",os.path.isdir(chosenDirectory))
 
+  directoryContents = os.listdir(chosenDirectory)
+
+  fileTypes = []
+
   if os.path.isdir(chosenDirectory) == True:
-    print(os.listdir(chosenDirectory))
+    print("\n---Directory Contents---")
+    for entry in directoryContents:
+      print(entry)
+      file_type = entry.split(".")
+      fileTypes.append(file_type[1])
+
+    print("------------------------\n")
   else:
     print("Try a different directory or format.")
     print("Example: /Users/User/Documents/\n")
