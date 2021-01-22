@@ -8,6 +8,8 @@ Secondly, the program will create new directories corresponding to the file type
 contained in the directory
 
 Finally, the program will move single files into their corresponding "home" folders.
+
+Twitter: @kiplandvaughn
 """
 
 import os
