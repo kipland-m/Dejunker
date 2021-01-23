@@ -59,6 +59,8 @@ DIRECTORIES = {
   DONE Next goal for program functionality, find a away to ignore other directories inside a given
   directory to only focus and raw files.
 
+Next goal for program functionality: form algorithm to sort over and create a list of all
+files that are ready to be sorted
 
 """
 
@@ -95,7 +97,7 @@ def main():
     # This loop displays the file type of the first file in fileTypes list,
     # since the file type can be denoted as [1]
 
-    print(len(fileTypes[0]))
+    print("Length of the first file entry in [0] of fileTypes",len(fileTypes[0]))
     if len(fileTypes[0]) < 2:
       print("The first file in the given directories file type is: A Folder")
     else:
