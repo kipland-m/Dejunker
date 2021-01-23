@@ -53,8 +53,12 @@ DIRECTORIES = {
 """
   DONE Next goal for program functionality: Be able to view any custom directory
 
-Next goal for program functionality: Print out each extension within a given
-directory, while skipping over folders.
+  DONE Next goal for program functionality: Print out each extension within a given
+  directory
+
+Next goal for program functionality, find a away to ignore other directories inside a given
+directory to only focus and raw files.
+
 
 """
 
@@ -67,6 +71,8 @@ def main():
 
   directoryContents = os.listdir(chosenDirectory)
 
+  # This is a 2D list that gets filled with lists that contain each files name denoted with [0]
+  # and extension denoted with [1]
   fileTypes = []
 
   if os.path.isdir(chosenDirectory) == True:
@@ -74,16 +80,19 @@ def main():
     #Where "entry" is a string, containing the name of a single folder or file
     #in a given directory
     for entry in directoryContents:
-      #Prints a string
+      #Prints a string of each file/folder within given directory
       print(entry)
-      
-      #Divides the string into a list containing the characters in the space to the left of "."
-      #and the characters to the right of "."
-
-      #The file type can be determined by the [1] position in this list.
-      print(entry.split('.'))
-
+      #Fills the fileTypes list with lists that contain 2 elements, the name of the file
+      #and the extension is applicable
+      fileTypes.append(entry.split('.'))
     print("------------------------\n")
+
+    # This loop loopp
+    for x in range(len(fileTypes)):
+      print(fileTypes[x])
+
+    print(fileTypes[0][1])
+
   else:
     print("Try a different directory or format.")
     print("Example: /Users/User/Documents/\n")
