@@ -76,7 +76,11 @@ def main():
     for entry in directoryContents:
       #Prints a string
       print(entry)
-      #Divides the string 
+      
+      #Divides the string into a list containing the characters in the space to the left of "."
+      #and the characters to the right of "."
+
+      #The file type can be determined by the [1] position in this list.
       print(entry.split('.'))
 
     print("------------------------\n")
