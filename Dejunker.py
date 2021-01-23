@@ -71,10 +71,13 @@ def main():
 
   if os.path.isdir(chosenDirectory) == True:
     print("\n---Directory Contents---")
+    #Where "entry" is a string, containing the name of a single folder or file
+    #in a given directory
     for entry in directoryContents:
+      #Prints a string
       print(entry)
-      file_type = entry.split(".")
-      fileTypes.append(file_type[1])
+      #Divides the string 
+      print(entry.split('.'))
 
     print("------------------------\n")
   else:
