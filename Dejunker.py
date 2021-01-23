@@ -56,8 +56,8 @@ DIRECTORIES = {
   DONE Next goal for program functionality: Print out each extension within a given
   directory
 
-Next goal for program functionality, find a away to ignore other directories inside a given
-directory to only focus and raw files.
+  DONE Next goal for program functionality, find a away to ignore other directories inside a given
+  directory to only focus and raw files.
 
 
 """
@@ -83,18 +83,23 @@ def main():
     for entry in directoryContents:
       #Prints a string of each file/folder within given directory
       print(entry)
-      #Fills the fileTypes list with lists that contain 2 elements, the name of the file
+      #Fills the fi leTypes list with lists that contain 2 elements, the name of the file
       #and the extension is applicable
       fileTypes.append(entry.split('.'))
     print("------------------------\n")
-
+ 
     print("---Files Within fileTypes---")
     # This loop displays each list (file) inside of the 2d fileTypes list.
     for x in range(len(fileTypes)):
       print(fileTypes[x])
     # This loop displays the file type of the first file in fileTypes list,
     # since the file type can be denoted as [1]
-    print("The first file in the given directories file type is: ", fileTypes[0][1])
+
+    print(len(fileTypes[0]))
+    if len(fileTypes[0]) < 2:
+      print("The first file in the given directories file type is: A Folder")
+    else:
+      print("The first file in the given directories file type is: ", fileTypes[0][1])
     print("----------------------------")
 
 
