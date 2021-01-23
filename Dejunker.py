@@ -64,8 +64,9 @@ directory to only focus and raw files.
 
 def main():
 
-  print("\nPaste which directory you would like sorted")
+  print("\n---Paste which directory you would like sorted---")
   chosenDirectory = raw_input("Enter directory: ")
+  print("-------------------------------------------------\n")
 
   print("Is this directory valid?",os.path.isdir(chosenDirectory))
 
@@ -87,11 +88,15 @@ def main():
       fileTypes.append(entry.split('.'))
     print("------------------------\n")
 
-    # This loop loopp
+    print("---Files Within fileTypes---")
+    # This loop displays each list (file) inside of the 2d fileTypes list.
     for x in range(len(fileTypes)):
       print(fileTypes[x])
+    # This loop displays the file type of the first file in fileTypes list,
+    # since the file type can be denoted as [1]
+    print("The first file in the given directories file type is: ", fileTypes[0][1])
+    print("----------------------------")
 
-    print(fileTypes[0][1])
 
   else:
     print("Try a different directory or format.")
