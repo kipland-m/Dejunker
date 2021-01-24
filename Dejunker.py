@@ -86,9 +86,9 @@ def main():
   
     print("\n---Directory Contents---")
 
-
-    # the counter will represent the amount of folders or "unsortable objects"
-    # in a given directory
+    #counter = iterates over the items within fileTypes
+    #unsortable = tracks folders (in theory)
+    #sortable = tracks raw files (in theory)
 
     counter = 0
     unsortable = 0
@@ -106,9 +106,11 @@ def main():
       fileTypes.append(entry.split('.'))
 
       # tests the length of a file inside a directory, if finding it has no extension
-      # i.e. a length of 1, add one to counter
+      # i.e. a length of 1, add one to unsortable
       if len(fileTypes[counter]) < 2:
         unsortable += 1
+        #counter iterates to have each element inside fileTypes list
+        #checked to see if it is unsortable
         counter += 1
       else:
         sortable += 1
