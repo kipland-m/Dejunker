@@ -62,6 +62,10 @@ DIRECTORIES = {
 Next goal for program functionality: form algorithm to sort over and create a list of all
 files that are ready to be sorted
 
+
+
+Be aware of the inevitable problem where a file contains more than one "." in its name.
+
 """
 
 def main():
@@ -79,15 +83,37 @@ def main():
   fileTypes = []
 
   if os.path.isdir(chosenDirectory) == True:
+  
     print("\n---Directory Contents---")
+
+
+    # the counter will represent the amount of folders or "unsortable objects"
+    # in a given directory
+
+    counter = 0
+    unsortable = 0
+    sortable = 0
+
     #Where "entry" is a string, containing the name of a single folder or file
     #in a given directory
     for entry in directoryContents:
+
       #Prints a string of each file/folder within given directory
       print(entry)
-      #Fills the fi leTypes list with lists that contain 2 elements, the name of the file
+
+      #Fills the fileTypes list with lists that contain 2 elements, the name of the file
       #and the extension is applicable
       fileTypes.append(entry.split('.'))
+
+      # tests the length of a file inside a directory, if finding it has no extension
+      # i.e. a length of 1, add one to counter
+      if len(fileTypes[counter]) < 2:
+        unsortable += 1
+        counter += 1
+      else:
+        sortable += 1
+    print("unsortable objects:",unsortable)
+    print("sortable objects:",sortable)
     print("------------------------\n")
  
     print("---Files Within fileTypes---")
