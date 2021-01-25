@@ -75,8 +75,7 @@ def main():
   print("-------------------------------------------------\n")
 
   print("Is this directory valid?",os.path.isdir(chosenDirectory))
-
-  directoryContents = os.listdir(chosenDirectory)
+  
 
   # This is a 2D list that gets filled with lists that contain each files name denoted with [0]
   # and extension denoted with [1]
@@ -84,6 +83,10 @@ def main():
 
   if os.path.isdir(chosenDirectory) == True:
   
+    # directoryContents is a self explanitory list that gets filled
+    # with seperate entities that each are names of files in a given directory.
+    directoryContents = os.listdir(chosenDirectory)
+
     print("\n---Directory Contents---")
 
     #counter = iterates over the items within fileTypes
@@ -134,9 +137,10 @@ def main():
 
 
   else:
+    print("\n---Couldnt find that directory---")
     print("Try a different directory or format.")
-    print("Example: /Users/User/Documents/\n")
-
+    print("Example: /Users/User/Documents/")
+    print("---------------------------------\n")
   
 
 
