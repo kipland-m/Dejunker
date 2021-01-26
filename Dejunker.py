@@ -59,9 +59,11 @@ DIRECTORIES = {
   DONE Next goal for program functionality, find a away to ignore other directories inside a given
   directory to only focus and raw files.
 
-Next goal for program functionality: form algorithm to sort over and create a list of all
-files that are ready to be sorted
+  DONE Next goal for program functionality: form algorithm to sort over and create a list of all
+  files that are ready to be sorted
 
+Next goal for program functionality: Create a list of all file types within a given directory, 
+then create a new directory for each unique entry in the list of file types
 
 
 Be aware of the inevitable problem where a file contains more than one "." in its name.
