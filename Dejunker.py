@@ -80,7 +80,6 @@ def main():
 
   print("Is this directory valid?",os.path.isdir(chosenDirectory))
   
-
   # This is a 2D list that gets filled with lists that contain each files name denoted with [0]
   # and extension denoted with [1]
   fileTypes = []
@@ -123,21 +122,29 @@ def main():
         counter += 1
       else:
         sortable += 1
+
     print("unsortable objects:",unsortable)
     print("sortable objects:",sortable)
     print("------------------------\n")
  
     print("---Files Within fileTypes---")
 
-
     # This loop displays each list (file) inside of the 2d fileTypes list.
     for x in range(len(fileTypes)):
       print(fileTypes[x])
 
+      # tests if there is two elements in each entry in the fileTypes list
+      # if there is only one element in the entry of the current iteration
+      # it simply states the element is a folder, and will reset the current
+      # iteration
       if len(fileTypes[x]) < 2:
         print("this is a folder, will not be added to rawfileTypes\n")
         continue
 
+      # if it is found that the length of the element in the list is greater than 1
+      # but less than 3 (i.e. 2) it will pick the file type up from that entry found
+      # at fileTypes[x][1] and put every file type found in the alogorithm into a new
+      # list at rawfileTypes
       elif len(fileTypes[x]) > 1 & len(fileTypes) < 3:
         rawfileTypes.append(fileTypes[x][1])
   
@@ -148,25 +155,25 @@ def main():
     #directories in, and you may use os.path.join in order to 
     #concatenate a path and generated folder names
 
+    # This list will contain all the new directories to be generated that is gains the knowledge
+    # from rawfileTypes
     directoryToCreate = []
 
+    # This loop creates directories with every file type found in rawfileTypes
+    # as the name of the new directory
     for x in range(len(rawfileTypes)):
       directoryToCreate.append(os.path.join(chosenDirectory, rawfileTypes[x]))
-    
 
+    # then any duplication errors are handled with the try and except
+    # within the below loop, which simply creates a new directory for every file type
+    # inside rawfileTypes
     for x in range(len(rawfileTypes)):
       try:
         os.mkdir(directoryToCreate[x])
       except OSError:
         continue
 
-
-
-    for entry in directoryToCreate:
-      print(entry)
-
     print("----------------------------")
-
 
   else:
     print("\n---Couldnt find that directory---")
@@ -174,7 +181,5 @@ def main():
     print("Example: /Users/User/Documents/")
     print("---------------------------------\n")
   
-
-
 if __name__ == '__main__':
 	main()
