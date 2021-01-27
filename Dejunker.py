@@ -62,8 +62,10 @@ DIRECTORIES = {
   DONE Next goal for program functionality: form algorithm to sort over and create a list of all
   files that are ready to be sorted
 
-Next goal for program functionality: Create a list of all file types within a given directory, 
-then create a new directory for each unique entry in the list of file types
+  DONE Next goal for program functionality: Create a list of all file types within a given directory, 
+
+Next goal for program functionaliy: Create a new directory for each unique entry 
+in the list of file types "rawfileTypes"
 
 
 Be aware of the inevitable problem where a file contains more than one "." in its name.
@@ -86,7 +88,6 @@ def main():
   rawfileTypes = []
 
   if os.path.isdir(chosenDirectory) == True:
-  
     # directoryContents is a self explanitory list that gets filled
     # with seperate entities that each are names of files in a given directory.
     directoryContents = os.listdir(chosenDirectory)
@@ -101,10 +102,10 @@ def main():
     unsortable = 0
     sortable = 0
 
+
     #Where "entry" is a string, containing the name of a single folder or file
     #in a given directory
     for entry in directoryContents:
-
       #Prints a string of each file/folder within given directory
       print(entry)
 
@@ -127,6 +128,8 @@ def main():
     print("------------------------\n")
  
     print("---Files Within fileTypes---")
+
+
     # This loop displays each list (file) inside of the 2d fileTypes list.
     for x in range(len(fileTypes)):
       print(fileTypes[x])
@@ -140,6 +143,12 @@ def main():
   
     print("\nthe variety of file types within the given directory are as follows:")  
     print(rawfileTypes)
+
+    #To implement a procedure to create new directories you must specifify a path to create the new
+    #directories in, and you may use os.path.join in order to concatenate a path and generated folder names
+
+    for x in range(len(rawfileTypes)):
+      print(rawfileTypes[x])
 
     print("----------------------------")
 
