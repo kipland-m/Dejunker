@@ -79,7 +79,7 @@ def main():
   print("-------------------------------------------------\n")
 
   print("Is this directory valid?",os.path.isdir(chosenDirectory))
-  
+
   # This is a 2D list that gets filled with lists that contain each files name denoted with [0]
   # and extension denoted with [1]
   fileTypes = []
@@ -122,7 +122,6 @@ def main():
         counter += 1
       else:
         sortable += 1
-
     print("unsortable objects:",unsortable)
     print("sortable objects:",sortable)
     print("------------------------\n")
@@ -131,6 +130,7 @@ def main():
 
     # This loop displays each list (file) inside of the 2d fileTypes list.
     for x in range(len(fileTypes)):
+      print(" ")
       print(fileTypes[x])
 
       # tests if there is two elements in each entry in the fileTypes list
@@ -138,7 +138,11 @@ def main():
       # it simply states the element is a folder, and will reset the current
       # iteration
       if len(fileTypes[x]) < 2:
-        print("this is a folder, will not be added to rawfileTypes\n")
+        print("> this is a folder, will not be added to rawfileTypes")
+        continue
+
+      if len(fileTypes[x]) > 2:
+        print("> this is a folder, will not be added to rawfileTypes")
         continue
 
       # if it is found that the length of the element in the list is greater than 1
@@ -146,10 +150,9 @@ def main():
       # at fileTypes[x][1] and put every file type found in the alogorithm into a new
       # list at rawfileTypes
       elif len(fileTypes[x]) > 1 & len(fileTypes) < 3:
+        print("adding to rawfileTypes..")
         rawfileTypes.append(fileTypes[x][1])
   
-    print("\nthe variety of file types within the given directory are as follows:")  
-    print(rawfileTypes)
 
     #To implement a procedure to create new directories you must specifify a path to create the new
     #directories in, and you may use os.path.join in order to 
@@ -172,6 +175,12 @@ def main():
         os.mkdir(directoryToCreate[x])
       except OSError:
         continue
+
+    print("\nNew directories added to:")
+    print(chosenDirectory)
+    print("\nAdded directories (ignore duplicates):")
+    for entry in directoryToCreate:
+      print(entry)
 
     print("----------------------------")
 
