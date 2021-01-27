@@ -83,6 +83,8 @@ def main():
   # and extension denoted with [1]
   fileTypes = []
 
+  rawfileTypes = []
+
   if os.path.isdir(chosenDirectory) == True:
   
     # directoryContents is a self explanitory list that gets filled
@@ -110,6 +112,7 @@ def main():
       #and the extension is applicable
       fileTypes.append(entry.split('.'))
 
+
       # tests the length of a file inside a directory, if finding it has no extension
       # i.e. a length of 1, add one to unsortable
       if len(fileTypes[counter]) < 2:
@@ -127,14 +130,17 @@ def main():
     # This loop displays each list (file) inside of the 2d fileTypes list.
     for x in range(len(fileTypes)):
       print(fileTypes[x])
-    # This loop displays the file type of the first file in fileTypes list,
-    # since the file type can be denoted as [1]
 
-    print("Length of the first file entry in [0] of fileTypes",len(fileTypes[0]))
-    if len(fileTypes[0]) < 2:
-      print("The first file in the given directories file type is: A Folder")
-    else:
-      print("The first file in the given directories file type is: ", fileTypes[0][1])
+      if len(fileTypes[x]) < 2:
+        print("this is a folder, will not be added to rawfileTypes\n")
+        continue
+
+      elif len(fileTypes[x]) > 1 & len(fileTypes) < 3:
+        rawfileTypes.append(fileTypes[x][1])
+  
+    print("\nthe variety of file types within the given directory are as follows:")  
+    print(rawfileTypes)
+
     print("----------------------------")
 
 
