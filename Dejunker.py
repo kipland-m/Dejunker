@@ -65,7 +65,7 @@ DIRECTORIES = {
   DONE Next goal for program functionality: Create a list of all file types within a given directory, 
 
 Next goal for program functionaliy: Create a new directory for each unique entry 
-in the list of file types "rawfileTypes"
+in the list of file types "rawfileTypes   "
 
 
 Be aware of the inevitable problem where a file contains more than one "." in its name.
@@ -145,10 +145,25 @@ def main():
     print(rawfileTypes)
 
     #To implement a procedure to create new directories you must specifify a path to create the new
-    #directories in, and you may use os.path.join in order to concatenate a path and generated folder names
+    #directories in, and you may use os.path.join in order to 
+    #concatenate a path and generated folder names
+
+    directoryToCreate = []
 
     for x in range(len(rawfileTypes)):
-      print(rawfileTypes[x])
+      directoryToCreate.append(os.path.join(chosenDirectory, rawfileTypes[x]))
+    
+
+    for x in range(len(rawfileTypes)):
+      try:
+        os.mkdir(directoryToCreate[x])
+      except OSError:
+        continue
+
+
+
+    for entry in directoryToCreate:
+      print(entry)
 
     print("----------------------------")
 
