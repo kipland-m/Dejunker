@@ -12,7 +12,7 @@ Finally, the program will move single files into their corresponding "home" fold
 Twitter: @kiplandvaughn
 """
 
-import os
+import os, time, shutil
 from pathlib import Path
 
 
@@ -74,8 +74,10 @@ Be aware of the inevitable problem where a file contains more than one "." in it
 
 def main():
 
+  time.sleep(.1)
   print("\n---Paste which directory you would like sorted---")
   chosenDirectory = raw_input("Enter directory: ")
+  time.sleep(.1)
   print("-------------------------------------------------\n")
 
   print("Is this directory valid?",os.path.isdir(chosenDirectory))
@@ -185,7 +187,10 @@ def main():
     print("----------------------------")
 
   else:
+
+    time.sleep(1)
     print("\n---Couldnt find that directory---")
+    time.sleep(1)
     print("Try a different directory or format.")
     print("Example: /Users/User/Documents/")
     print("---------------------------------\n")
