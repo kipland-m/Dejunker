@@ -141,7 +141,7 @@ def main():
       # iteration
       if len(fileTypes[x]) < 2:
         print("> this is a folder, will not be added to rawfileTypes")
-        continue
+        continue               
 
       if len(fileTypes[x]) > 2:
         print("> this is a folder, will not be added to rawfileTypes")
@@ -156,11 +156,14 @@ def main():
         rawfileTypes.append(fileTypes[x][1])
   
 
+    # DIRECTORY CREATION
+
+
     #To implement a procedure to create new directories you must specifify a path to create the new
     #directories in, and you may use os.path.join in order to 
     #concatenate a path and generated folder names
 
-    # This list will contain all the new directories to be generated that is gains the knowledge
+    # This list will contain all the new directories to be generated that gains the knowledge
     # from rawfileTypes
     directoryToCreate = []
 
@@ -170,37 +173,46 @@ def main():
       directoryToCreate.append(os.path.join(chosenDirectory, rawfileTypes[x]))
 
     # then any duplication errors are handled with the try and except
-    # within the below loop, which simply creates a new directory for every file type
-    # inside rawfileTypes
+    # within the below loop, which simply creates a new directory for every file path
+    # inside of directoryToCreate
+  
+    """
     for x in range(len(rawfileTypes)):
       try:
         os.mkdir(directoryToCreate[x])
       except OSError:
         continue
+    """
+  
 
-    #need to create a list that contains directories of files to be moved 
-    #into the newly created directories based on file type
+    # FILE MOVEMENT
+
+    filesToMove = []
+    fileNewHome = []
+
+    print(directoryContents)
 
     for x in range(len(rawfileTypes)):
-      pass 
-      #shutil.move() takes 2 parameters, the source destination, and the end destination
-      #Example:
-      #   shutil.move(filePathList[1],directoryToCreate[1])
-      #shutil.move()
+      pass
 
+      #filesToMove.append(os.)
+
+
+
+    # Details newly created directories
     print("\nNew directories added to:")
     print(chosenDirectory)
     print("\nAdded directories (ignore duplicates):")
+    
     for entry in directoryToCreate:
       print(entry)
-
+    
     print("----------------------------")
 
-  else:
 
-    time.sleep(1)
+  # This else clause handles if the path to the directory to be sorted is invalid
+  else:
     print("\n---Couldnt find that directory---")
-    time.sleep(1)
     print("Try a different directory or format.")
     print("Example: /Users/User/Documents/")
     print("---------------------------------\n")
