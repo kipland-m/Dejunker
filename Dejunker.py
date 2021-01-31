@@ -178,6 +178,16 @@ def main():
       except OSError:
         continue
 
+    #need to create a list that contains directories of files to be moved 
+    #into the newly created directories based on file type
+
+    for x in range(len(rawfileTypes)):
+      pass 
+      #shutil.move() takes 2 parameters, the source destination, and the end destination
+      #Example:
+      #   shutil.move(filePathList[1],directoryToCreate[1])
+      #shutil.move()
+
     print("\nNew directories added to:")
     print(chosenDirectory)
     print("\nAdded directories (ignore duplicates):")
