@@ -19,6 +19,16 @@ def main():
 		directoryPaths.append(os.path.join(chosenDirectory, directoryContents[x]))
 
 
+		counter = 0
+
+		for entry in directoryPaths:
+			if os.path.isdir(entry) == True:
+				unsortableFiles.append(directoryPaths[counter])
+			
+			elif os.path.isfile(entry) == True:
+				sortableFiles.append(directoryPaths[counter])
+			
+			counter += 1
 
 	print("Sortable")
 	for entry in sortableFiles:
