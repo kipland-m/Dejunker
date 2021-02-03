@@ -8,6 +8,8 @@ def main():
 	unsortableFiles = []
 	# Will be populated with filepaths of all the items inside a given directory
 	directoryPaths = []
+	# Will be populated with lists pulled from directoryContents
+	fileTypes = []
 
 	chosenDirectory = raw_input("Enter directory: ")
 
@@ -19,8 +21,14 @@ def main():
 		directoryPaths.append(os.path.join(chosenDirectory, directoryContents[x]))
 
 
-	counter = 0
+	# This for loop looks into directoryContents, splits the entry by a 
+	for entry in directoryContents:
+		fileTypes.append(entry.split('.'))
 
+	# This for loop views into directoryPaths, which is populated
+	# with all the filepaths found in the given directory.
+	# It then checks every filepath, and determines if they are files or folders
+	counter = 0
 	for entry in directoryPaths:
 		if os.path.isdir(entry) == True:
 			unsortableFiles.append(directoryPaths[counter])
@@ -28,6 +36,8 @@ def main():
 		elif os.path.isfile(entry) == True:
 			sortableFiles.append(directoryPaths[counter])
 		
+
+
 		counter += 1
 
 	print("Sortable")
