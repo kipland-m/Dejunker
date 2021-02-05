@@ -10,6 +10,8 @@ def main():
 	directoryPaths = []
 	# Will be populated with lists pulled from directoryContents
 	fileTypes = []
+	
+
 
 	chosenDirectory = raw_input("Enter directory: ")
 
@@ -24,6 +26,9 @@ def main():
 	# This for loop looks into directoryContents, splits the entry by a 
 	for entry in directoryContents:
 		fileTypes.append(entry.split('.'))
+
+
+
 
 	# This for loop views into directoryPaths, which is populated
 	# with all the filepaths found in the given directory.
