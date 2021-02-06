@@ -45,21 +45,30 @@ def main():
 	# Populates the directoryToCreate list that will contain every, well, directory to create
 	for x in range(len(fileTypes)):
 		directoryToCreate.append(os.path.join(chosenDirectory, fileTypes[x]))
-	
 
-	print("Queued Directories")
+	for x in range(len(fileTypes)):
+		try:
+			os.mkdir(directoryToCreate[x])
+		except OSError:
+			continue
+
+
+
+
+	##### Development runtime info
+	print("\nQueued Directories")
 	for entry in directoryToCreate:
 		print(entry)
 
-	print("File Types")
+	print("\nFile Types")
 	for entry in fileTypes:
 		print(entry)
 
-	print("Sortable")
+	print("\nSortable")
 	for entry in sortableFiles:
 		print(entry)
 
-	print("Unsortable")
+	print("\nUnsortable")
 	for entry in unsortableFiles:
 		print(entry)
 	###### SUCCESSFUL PROGRAM FINISH
