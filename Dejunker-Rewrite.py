@@ -40,12 +40,14 @@ def main():
 	# Create list of all file extensions that need to have a new directory created
 	for x in range(len(sortableFiles)):
 		fileName, fileExtension = os.path.splitext(sortableFiles[x])
+		fileExtension = fileExtension.replace('.','')
 		fileTypes.append(fileExtension)
 
 	# Populates the directoryToCreate list that will contain every, well, directory to create
 	for x in range(len(fileTypes)):
 		directoryToCreate.append(os.path.join(chosenDirectory, fileTypes[x]))
 
+	# This create all the folders that the sortableFiles will be place in
 	for x in range(len(fileTypes)):
 		try:
 			os.mkdir(directoryToCreate[x])
