@@ -13,7 +13,7 @@ def main():
 	# Will be populated with all generated directories to create new "sorted" directories
 	directoryToCreate = []	
 
-
+	###### PROGRAM START
 	chosenDirectory = raw_input("Enter directory: ")
 
 
@@ -38,20 +38,32 @@ def main():
 
 
 	# Create list of all file extensions that need to have a new directory created
-	
 	for x in range(len(sortableFiles)):
 		fileName, fileExtension = os.path.splitext(sortableFiles[x])
 		fileTypes.append(fileExtension)
+
+	# Populates the directoryToCreate list that will contain every, well, directory to create
+	for x in range(len(fileTypes)):
+		directoryToCreate.append(os.path.join(chosenDirectory, fileTypes[x]))
 	
+
+	print("Queued Directories")
+	for entry in directoryToCreate:
+		print(entry)
+
 	print("File Types")
 	for entry in fileTypes:
 		print(entry)
+
 	print("Sortable")
 	for entry in sortableFiles:
 		print(entry)
+
 	print("Unsortable")
 	for entry in unsortableFiles:
 		print(entry)
+	###### SUCCESSFUL PROGRAM FINISH
+
 
 if __name__ == '__main__':
 	main()
