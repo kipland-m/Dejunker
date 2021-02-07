@@ -1,4 +1,5 @@
 import os, shutil
+from collections import Counter
 
 def main():
 
@@ -11,7 +12,10 @@ def main():
 	# Will be populated with all file types within given directory
 	fileTypes = []
 	# Will be populated with all generated directories to create new "sorted" directories
-	directoryToCreate = []	
+	directoryToCreate = []
+	# Will be populated with all the file types that there are only one of
+	singularFiles = []
+
 
 	###### PROGRAM START
 	chosenDirectory = raw_input("Enter directory: ")
@@ -45,7 +49,17 @@ def main():
 	# Populates the directoryToCreate list that will contain every, well, directory to create
 	for x in range(len(fileTypes)):
 		directoryToCreate.append(os.path.join(chosenDirectory, fileTypes[x]))
+	
+	filetypeAmount = Counter(fileTypes)
+	"""
+	for x in range(len(fileTypes)):
+		if filetypeAmount(fileTypes[x]) == 1:
+			singularFiles.append(fileTypes[x])
+		elif filetypeAmount(fileTypes[x]) > 1:
+			continue
+	"""
 
+	### FILE MANIPULATION STARTS HERE
 	# This create all the folders that the sortableFiles will be place in
 	for x in range(len(fileTypes)):
 		try:
@@ -55,13 +69,14 @@ def main():
 
 	# This for loop will move all the files in sortableFiles
 	# to their new "homes" that were created in the for loop above.
+	"""
 	for x in range(len(fileTypes)):
-		try:
-			shutil.move(sortableFiles[x],directoryToCreate[x])
-		except shutil.Error:
-			continue
-
-	##### Development runtime info
+			try:
+				shutil.move(sortableFiles[x],directoryToCreate[x])
+			except shutil.Error:
+				continue
+	"""
+	##### Development runtime infao
 	print("\nQueued Directories")
 	for entry in directoryToCreate:
 		print(entry)
@@ -73,10 +88,17 @@ def main():
 	print("\nSortable")
 	for entry in sortableFiles:
 		print(entry)
+	
+	print("\nThere are only of these file types therefore they will not be moved")
+	for entry in singularFiles:
+		print(entry)
 
 	print("\nUnsortable")
 	for entry in unsortableFiles:
 		print(entry)
+
+
+	print(filetypeAmount[fileTypes[4]])
 	###### SUCCESSFUL PROGRAM FINISH
 
 
