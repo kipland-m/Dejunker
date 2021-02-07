@@ -24,7 +24,7 @@ def main():
 	if os.path.isdir(chosenDirectory) == True:
 		directoryContents = os.listdir(chosenDirectory)
 
-	else:
+	else:		
 		print("\n---Couldnt find that directory---")
 		print("Try a different directory or format.")
 		print("Example: /Users/User/Documents/")
@@ -57,13 +57,13 @@ def main():
 		directoryToCreate.append(os.path.join(chosenDirectory, fileTypes[x]))
 	
 	filetypeAmount = Counter(fileTypes)
-	"""
+	
 	for x in range(len(fileTypes)):
-		if filetypeAmount(fileTypes[x]) == 1:
+		if filetypeAmount[fileTypes[x]] == 1:
 			singularFiles.append(fileTypes[x])
-		elif filetypeAmount(fileTypes[x]) > 1:
+		elif filetypeAmount[fileTypes[x]] > 1:
 			continue
-	"""
+
 
 	### FILE MANIPULATION STARTS HERE
 	# This create all the folders that the sortableFiles will be place in
@@ -102,9 +102,6 @@ def main():
 	print("\nUnsortable")
 	for entry in unsortableFiles:
 		print(entry)
-
-
-	print(filetypeAmount[fileTypes[4]])
 	###### SUCCESSFUL PROGRAM FINISH
   
 
