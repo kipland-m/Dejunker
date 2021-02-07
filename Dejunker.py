@@ -24,6 +24,12 @@ def main():
 	if os.path.isdir(chosenDirectory) == True:
 		directoryContents = os.listdir(chosenDirectory)
 
+	else:
+		print("\n---Couldnt find that directory---")
+		print("Try a different directory or format.")
+		print("Example: /Users/User/Documents/")
+		print("---------------------------------\n")
+
 	for x in range(len(directoryContents)):
 		directoryPaths.append(os.path.join(chosenDirectory, directoryContents[x]))
 
@@ -100,7 +106,7 @@ def main():
 
 	print(filetypeAmount[fileTypes[4]])
 	###### SUCCESSFUL PROGRAM FINISH
-
+  
 
 if __name__ == '__main__':
 	main()
