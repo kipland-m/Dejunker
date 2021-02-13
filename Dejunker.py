@@ -24,12 +24,6 @@ def main():
 	if os.path.isdir(chosenDirectory) == True:
 		directoryContents = os.listdir(chosenDirectory)
 
-	else:		
-		print("\n---Couldnt find that directory---")
-		print("Try a different directory or format.")
-		print("Example: /Users/User/Documents/")
-		print("---------------------------------\n")
-
 	for x in range(len(directoryContents)):
 		directoryPaths.append(os.path.join(chosenDirectory, directoryContents[x]))
 
@@ -46,23 +40,25 @@ def main():
 		counter += 1
 
 
+	filetypeAmount = Counter(fileTypes)
+
 	# Create list of all file extensions that need to have a new directory created
 	for x in range(len(sortableFiles)):
 		fileName, fileExtension = os.path.splitext(sortableFiles[x])
 		fileExtension = fileExtension.replace('.','')
 		fileTypes.append(fileExtension)
 
-	# Populates the directoryToCreate list that will contain every, well, directory to create
-	for x in range(len(fileTypes)):
-		directoryToCreate.append(os.path.join(chosenDirectory, fileTypes[x]))
-	
-	filetypeAmount = Counter(fileTypes)
-	
+	# This loop handles detecting whether or not a file is the only of its type
+	# which then it will append it to singularFiles, and remove it from fileTypes
 	for x in range(len(fileTypes)):
 		if filetypeAmount[fileTypes[x]] == 1:
 			singularFiles.append(fileTypes[x])
 		elif filetypeAmount[fileTypes[x]] > 1:
 			continue
+
+	# Populates the directoryToCreate list that will contain every, well, directory to create
+	for x in range(len(fileTypes)):
+		directoryToCreate.append(os.path.join(chosenDirectory, fileTypes[x]))
 
 
 	### FILE MANIPULATION STARTS HERE
@@ -82,6 +78,8 @@ def main():
 			except shutil.Error:
 				continue
 	"""
+
+
 	##### Development runtime infao
 	print("\nQueued Directories")
 	for entry in directoryToCreate:
@@ -95,15 +93,20 @@ def main():
 	for entry in sortableFiles:
 		print(entry)
 	
-	print("\nThere are only of these file types therefore they will not be moved")
+	print("\nThere are only one of these file types therefore they will not be moved")
 	for entry in singularFiles:
 		print(entry)
 
 	print("\nUnsortable")
 	for entry in unsortableFiles:
 		print(entry)
+
+	print(Counter(fileTypes))
+
+
 	###### SUCCESSFUL PROGRAM FINISH
   
+
 
 if __name__ == '__main__':
 	main()
